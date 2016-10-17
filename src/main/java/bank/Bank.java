@@ -28,7 +28,8 @@ public class Bank {
     }
 
     public int calculateBalance(Account account) {
-        int totalDeposit, totalWithdraw;
+        int totalDeposit;
+        int totalWithdraw;
         List<Transaction> transactions = account.getTransactions();
         totalDeposit = transactions.stream().filter(t -> t.getType().equals(TransactionType.DEPOSIT))
                 .mapToInt(t -> t.getAmount())
