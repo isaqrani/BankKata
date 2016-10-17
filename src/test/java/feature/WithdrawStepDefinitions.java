@@ -7,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class WithdrawStepDefinitions {
 
-
     private Bank bank = new Bank();
     private Account account;
 
