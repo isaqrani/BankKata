@@ -17,3 +17,4 @@ Scenario: An existing client withdraws from his account
 ```
 [![Build Status](https://travis-ci.org/isaqrani/BankKata.svg?branch=master)](https://travis-ci.org/isaqrani/BankKata)
 [![codecov](https://codecov.io/gh/isaqrani/BankKata/branch/master/graph/badge.svg)](https://codecov.io/gh/isaqrani/BankKata)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0440b0ebf0ec4577a3401add5afb9ed3)](https://www.codacy.com/app/ilysaq/BankKata-Draft?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=isaqrani/BankKata-Draft&amp;utm_campaign=Badge_Grade)
