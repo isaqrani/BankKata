@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class AccountTest {
 
     @Mock
-    Client client;
+    private Client client;
     private Account account;
 
     @Before

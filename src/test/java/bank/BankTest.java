@@ -16,7 +16,7 @@ public class BankTest {
     private static final int INITIAL_AMOUNT = 100;
     private Bank bank;
     @Mock
-    Client client;
+    private Client client;
 
     @Before
     public void initialise() {
