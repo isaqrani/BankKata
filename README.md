@@ -15,3 +15,4 @@ Scenario: An existing client withdraws from his account
   
   Then the new balance is 90.0 EUR 
 ```
+[![Build Status](https://travis-ci.org/isaqrani/Bank-kata.svg?branch=master)](https://travis-ci.org/isaqrani/Bank-kata)
