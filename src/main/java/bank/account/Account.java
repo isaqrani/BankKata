@@ -8,6 +8,7 @@ import java.util.List;
 public class Account {
 
     private Client client;
+
     private List<Transaction> transactions;
 
     public Account(Client client) {
