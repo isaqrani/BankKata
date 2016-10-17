@@ -16,4 +16,4 @@ Scenario: An existing client withdraws from his account
   Then the new balance is 90.0 EUR 
 ```
 [![Build Status](https://travis-ci.org/isaqrani/BankKata.svg?branch=ci_branche)](https://travis-ci.org/isaqrani/BankKata)
-[![codecov](https://codecov.io/gh/isaqrani/Bank-kata/branch/master/graph/badge.svg)](https://codecov.io/gh/isaqrani/BankKata)
+[![codecov](https://codecov.io/gh/isaqrani/Bank-kata/branch/ci_branche/graph/badge.svg)](https://codecov.io/gh/isaqrani/BankKata)
