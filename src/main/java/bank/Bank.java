@@ -7,6 +7,7 @@ import bank.transaction.TransactionType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Bank {
 
@@ -32,15 +33,16 @@ public class Bank {
         int totalWithdraw;
         List<Transaction> transactions = account.getTransactions();
         totalDeposit = transactions.stream().filter(t -> t.getType().equals(TransactionType.DEPOSIT))
-                .mapToInt(t -> t.getAmount())
+                .mapToInt(Transaction::getAmount)
                 .sum();
         totalWithdraw = transactions.stream().filter(t -> t.getType().equals(TransactionType.WITHDRAWAL))
-                .mapToInt(t -> t.getAmount())
+                .mapToInt(Transaction::getAmount)
                 .sum();
+
         return totalDeposit - totalWithdraw;
     }
 
     public List<Account> getAccounts() {
-        return new ArrayList<>(this.accounts);
+        return this.accounts.stream().map(Account::copy).collect(Collectors.toList());
     }
 }
