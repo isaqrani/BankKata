@@ -21,7 +21,6 @@ public class BankTest {
 
     private static final int INITIAL_AMOUNT = 100;
     private Bank bank;
-    private List<Transaction> transactions;
     @Mock
     private Client client;
     @Mock
@@ -31,7 +30,7 @@ public class BankTest {
     public void initialise() {
         bank = new Bank();
 
-        transactions = new ArrayList<>();
+        List<Transaction> transactions = new ArrayList<>();
         transactions.add(new Transaction(TransactionType.DEPOSIT, INITIAL_AMOUNT));
         transactions.add(new Transaction(TransactionType.WITHDRAWAL, 50));
         transactions.add(new Transaction(TransactionType.WITHDRAWAL, 30));
