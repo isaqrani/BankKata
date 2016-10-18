@@ -55,6 +55,14 @@ public class BankTest {
 
     @Test
     public void
+    should_calculate_balance_after_one_withdrawal() {
+        Account account = bank.createAccount(client, INITIAL_AMOUNT);
+        bank.withdraw(account, 60);
+        assertEquals(40, bank.calculateBalance(account));
+    }
+
+    @Test
+    public void
     should_calculate_balance_after_withdrawals() {
         assertEquals(20, bank.calculateBalance(account));
     }

@@ -30,16 +30,16 @@ public class Bank {
 
     public int calculateBalance(Account account) {
         int totalDeposit;
-        int totalWithdraw;
+        int totalWithdrawal;
         List<Transaction> transactions = account.getTransactions();
         totalDeposit = transactions.stream().filter(t -> t.getType().equals(TransactionType.DEPOSIT))
                 .mapToInt(Transaction::getAmount)
                 .sum();
-        totalWithdraw = transactions.stream().filter(t -> t.getType().equals(TransactionType.WITHDRAWAL))
+        totalWithdrawal = transactions.stream().filter(t -> t.getType().equals(TransactionType.WITHDRAWAL))
                 .mapToInt(Transaction::getAmount)
                 .sum();
 
-        return totalDeposit - totalWithdraw;
+        return totalDeposit - totalWithdrawal;
     }
 
     public List<Account> getAccounts() {
