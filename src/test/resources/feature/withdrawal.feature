@@ -1,4 +1,4 @@
-Feature: Withdraw from account As a client of the bank I want to withdraw money from my account In order to have cash
+Feature: Withdraw from account - As a client of the bank I want to withdraw money from my account In order to have cash
 
   Scenario: An existing client withdraws from his account
     Given an existing client named "pierre-jean" with 100 EUR in his account
