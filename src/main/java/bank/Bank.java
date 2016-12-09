@@ -27,6 +27,10 @@ public class Bank {
     public void withdraw(Account account, int amount) {
         account.addTransaction(new Transaction(TransactionType.WITHDRAWAL, amount));
     }
+    
+    public void deposit(Account account, int amount) {
+    	account.addTransaction(new Transaction(TransactionType.DEPOSIT, amount));
+	}
 
     public int calculateBalance(Account account) {
         int totalDeposit;

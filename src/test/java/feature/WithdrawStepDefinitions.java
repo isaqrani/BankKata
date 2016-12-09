@@ -24,8 +24,14 @@ public class WithdrawStepDefinitions {
         bank.withdraw(account, amount);
     }
 
-    @Then("^the new balance is (\\d+) EUR$")
+    @When("^he deposits (\\d+) EUR into his account$")
+    public void he_into_amount_EUR_into_his_account(int amount) throws Throwable {
+        bank.deposit(account, amount);
+    }
+    
+    @Then("^his new balance is (\\d+) EUR$")
     public void the_new_balance_is_balance_EUR(int balance) throws Throwable {
         assertEquals(balance, bank.calculateBalance(account));
-    }
+    } 
+
 }

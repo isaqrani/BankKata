@@ -34,6 +34,9 @@ public class BankTest {
         transactions.add(new Transaction(TransactionType.DEPOSIT, INITIAL_AMOUNT));
         transactions.add(new Transaction(TransactionType.WITHDRAWAL, 50));
         transactions.add(new Transaction(TransactionType.WITHDRAWAL, 30));
+        transactions.add(new Transaction(TransactionType.DEPOSIT, 100));
+        transactions.add(new Transaction(TransactionType.DEPOSIT, 150));
+        transactions.add(new Transaction(TransactionType.WITHDRAWAL, 200));
 
         given(account.getTransactions()).willReturn(transactions);
     }
@@ -59,11 +62,19 @@ public class BankTest {
         bank.withdraw(account, 60);
         assertEquals(40, bank.calculateBalance(account));
     }
+    
+    @Test
+    public void
+    should_calculate_balance_after_one_deposit() {
+        Account account = bank.createAccount(client, INITIAL_AMOUNT);
+        bank.deposit(account, 60);
+        assertEquals(160, bank.calculateBalance(account));
+    }
 
     @Test
     public void
-    should_calculate_balance_after_withdrawals() {
-        assertEquals(20, bank.calculateBalance(account));
-    }
+    should_calculate_balance_after_transactions() {
+        assertEquals(70, bank.calculateBalance(account));
+    } 
 
 }
