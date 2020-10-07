@@ -1,10 +1,12 @@
 package bank.transaction;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.time.LocalDate;
 
+@EqualsAndHashCode
 @Getter
 @Builder
 public class Transaction {

@@ -1,19 +1,27 @@
 package feature;
 
 import bank.Bank;
+import bank.Console;
+import bank.Operation;
+import bank.OperationsHistoryPrinter;
 import bank.account.Account;
 import bank.account.Client;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.mockito.Mockito;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 
 public class WithdrawStepDefinitions {
 
-    private final Bank bank = new Bank(() -> LocalDate.of(2020,10,7));
+    private final Console console = Mockito.mock(Console.class);
+    private final OperationsHistoryPrinter printer = new OperationsHistoryPrinter(console);
+    private final Bank bank = new Bank(() -> LocalDate.of(2020, 10, 7), printer);
     private Account account;
 
     @Given("^an existing client named \"([^\"]*)\" with (\\d+) EUR in his account$")
@@ -34,6 +42,15 @@ public class WithdrawStepDefinitions {
     @Then("^his new balance is (\\d+) EUR$")
     public void the_new_balance_is_balance_EUR(int balance){
         assertThat(bank.calculateBalance(account)).isEqualTo(balance);
-    } 
+    }
 
+    @When("^he display operations history$")
+    public void heDisplayOperationsHistory() {
+        bank.printHistory(account);
+    }
+
+    @Then("^his see following operations:$")
+    public void hisSeeFollowingOperations(List<Operation> operations) {
+        verify(console).print(operations);
+    }
 }

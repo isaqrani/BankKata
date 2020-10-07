@@ -15,10 +15,12 @@ public class Bank {
 
     private final List<Account> accounts;
     private final Clock clock;
+    private final OperationsHistoryPrinter operationsHistoryPrinter;
 
-    public Bank(Clock clock) {
+    public Bank(Clock clock, OperationsHistoryPrinter operationsHistoryPrinter) {
         this.accounts = new ArrayList<>();
         this.clock = clock;
+        this.operationsHistoryPrinter = operationsHistoryPrinter;
     }
 
     public Account createAccount(Client client, int balance) {
@@ -65,5 +67,9 @@ public class Bank {
 
     public List<Account> getAccounts() {
         return this.accounts.stream().map(Account::copy).collect(Collectors.toList());
+    }
+
+    public void printHistory(Account account) {
+        operationsHistoryPrinter.printHistory(account.getTransactions());
     }
 }
