@@ -2,6 +2,8 @@ package bank;
 
 import bank.account.Account;
 import bank.account.Client;
+import bank.history.OperationsHistoryPrinter;
+import bank.infra.Clock;
 import bank.transaction.Transaction;
 
 import java.util.ArrayList;

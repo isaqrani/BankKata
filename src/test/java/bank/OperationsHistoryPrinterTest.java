@@ -1,5 +1,8 @@
 package bank;
 
+import bank.history.Operation;
+import bank.history.OperationsHistoryPrinter;
+import bank.infra.Console;
 import bank.transaction.Transaction;
 import junit.framework.TestCase;
 import org.junit.Test;

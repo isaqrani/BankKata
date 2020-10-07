@@ -1,5 +1,6 @@
-package bank;
+package bank.history;
 
+import bank.infra.Console;
 import bank.transaction.Transaction;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package bank;
+package bank.infra;
 
 import java.time.LocalDate;
 

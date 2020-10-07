@@ -1,4 +1,4 @@
-package bank;
+package bank.history;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

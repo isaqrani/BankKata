@@ -1,9 +1,9 @@
 package feature;
 
 import bank.Bank;
-import bank.Console;
-import bank.Operation;
-import bank.OperationsHistoryPrinter;
+import bank.infra.Console;
+import bank.history.Operation;
+import bank.history.OperationsHistoryPrinter;
 import bank.account.Account;
 import bank.account.Client;
 import cucumber.api.java.en.Given;
