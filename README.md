@@ -30,4 +30,3 @@ Scenario:  An existing client deposits into his account
    
    Then his new balance is 350.0 EUR
 ```
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/186a96ec67cf4011b3c0da78f0890ef5)](https://www.codacy.com/app/ilysaq/BankKata?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=isaqrani/BankKata&amp;utm_campaign=Badge_Grade)
