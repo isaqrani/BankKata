@@ -7,11 +7,13 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.time.LocalDate;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WithdrawStepDefinitions {
 
-    private Bank bank = new Bank();
+    private final Bank bank = new Bank(() -> LocalDate.of(2020,10,7));
     private Account account;
 
     @Given("^an existing client named \"([^\"]*)\" with (\\d+) EUR in his account$")
@@ -20,17 +22,17 @@ public class WithdrawStepDefinitions {
     }
 
     @When("^he withdraws (\\d+) EUR from his account$")
-    public void he_withdraws_amount_EUR_from_his_account(int amount) throws Throwable {
+    public void he_withdraws_amount_EUR_from_his_account(int amount){
         bank.withdraw(account, amount);
     }
 
     @When("^he deposits (\\d+) EUR into his account$")
-    public void he_into_amount_EUR_into_his_account(int amount) throws Throwable {
+    public void he_into_amount_EUR_into_his_account(int amount){
         bank.deposit(account, amount);
     }
     
     @Then("^his new balance is (\\d+) EUR$")
-    public void the_new_balance_is_balance_EUR(int balance) throws Throwable {
+    public void the_new_balance_is_balance_EUR(int balance){
         assertThat(bank.calculateBalance(account)).isEqualTo(balance);
     } 
 

@@ -1,20 +1,16 @@
 package bank.transaction;
 
+import lombok.Builder;
+import lombok.Getter;
+
+import java.time.LocalDate;
+
+@Getter
+@Builder
 public class Transaction {
 
-    private TransactionType type;
-    private int amount;
+    private final TransactionType type;
+    private final int amount;
+    private final LocalDate date;
 
-    public Transaction(TransactionType type, int amount) {
-        this.type = type;
-        this.amount = amount;
-    }
-
-    public TransactionType getType() {
-        return type;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
 }

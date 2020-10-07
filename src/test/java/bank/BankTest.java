@@ -3,18 +3,21 @@ package bank;
 import bank.account.Account;
 import bank.account.Client;
 import bank.transaction.Transaction;
-import bank.transaction.TransactionType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static bank.transaction.TransactionType.DEPOSIT;
+import static bank.transaction.TransactionType.WITHDRAWAL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BankTest {
@@ -25,18 +28,27 @@ public class BankTest {
     private Client client;
     @Mock
     private Account account;
+    @Mock
+    private Clock clock;
 
     @Before
     public void initialise() {
-        bank = new Bank();
+        bank = new Bank(clock);
 
         List<Transaction> transactions = new ArrayList<>();
-        transactions.add(new Transaction(TransactionType.DEPOSIT, INITIAL_AMOUNT));
-        transactions.add(new Transaction(TransactionType.WITHDRAWAL, 50));
-        transactions.add(new Transaction(TransactionType.WITHDRAWAL, 30));
-        transactions.add(new Transaction(TransactionType.DEPOSIT, 100));
-        transactions.add(new Transaction(TransactionType.DEPOSIT, 150));
-        transactions.add(new Transaction(TransactionType.WITHDRAWAL, 200));
+        doReturn(LocalDate.of(2020,10,7)).when(clock).now();
+        transactions.add(Transaction.builder().type(DEPOSIT).amount(INITIAL_AMOUNT).date(clock.now()).build());
+        doReturn(LocalDate.of(2020,10,8)).when(clock).now();
+        transactions.add(Transaction.builder().type(WITHDRAWAL).amount(50).date(clock.now()).build());
+
+        doReturn(LocalDate.of(2020,10,9)).when(clock).now();
+        transactions.add(Transaction.builder().type(WITHDRAWAL).amount(30).date(clock.now()).build());
+        doReturn(LocalDate.of(2020,10,24)).when(clock).now();
+        transactions.add(Transaction.builder().type(DEPOSIT).amount(100).date(clock.now()).build());
+        doReturn(LocalDate.of(2020,10,24)).when(clock).now();
+        transactions.add(Transaction.builder().type(DEPOSIT).amount(150).date(clock.now()).build());
+        doReturn(LocalDate.of(2020,11,7)).when(clock).now();
+        transactions.add(Transaction.builder().type(WITHDRAWAL).amount(200).date(clock.now()).build());
 
         given(account.getTransactions()).willReturn(transactions);
     }
