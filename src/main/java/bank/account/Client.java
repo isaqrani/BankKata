@@ -1,10 +1,8 @@
 package bank.account;
 
+import lombok.Builder;
+
+@Builder
 public class Client {
-
-    private String name;
-
-    public Client(String name) {
-        this.name = name;
-    }
+    private final String name;
 }

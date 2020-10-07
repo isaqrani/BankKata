@@ -8,12 +8,11 @@ import java.util.List;
 
 public class Account {
 
-    private Client client;
+    private final Client client;
 
-    private List<Transaction> transactions;
+    private List<Transaction> transactions = new ArrayList<>();
 
     public Account(Client client) {
-        this.transactions = new ArrayList<>();
         this.client = client;
     }
 

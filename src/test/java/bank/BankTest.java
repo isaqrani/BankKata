@@ -13,7 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -45,14 +45,14 @@ public class BankTest {
     public void
     should_create_a_new_account() {
         bank.createAccount(client, 0);
-        assertEquals(1, bank.getAccounts().size());
+        assertThat(bank.getAccounts()).hasSize(1);
     }
 
     @Test
     public void
     should_create_a_new_account_with_initial_balance() {
         Account account = bank.createAccount(client, INITIAL_AMOUNT);
-        assertEquals(INITIAL_AMOUNT, bank.calculateBalance(account));
+        assertThat(INITIAL_AMOUNT).isEqualTo(bank.calculateBalance(account));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class BankTest {
     should_calculate_balance_after_one_withdrawal() {
         Account account = bank.createAccount(client, INITIAL_AMOUNT);
         bank.withdraw(account, 60);
-        assertEquals(40, bank.calculateBalance(account));
+        assertThat(bank.calculateBalance(account)).isEqualTo(40);
     }
     
     @Test
@@ -68,13 +68,13 @@ public class BankTest {
     should_calculate_balance_after_one_deposit() {
         Account account = bank.createAccount(client, INITIAL_AMOUNT);
         bank.deposit(account, 60);
-        assertEquals(160, bank.calculateBalance(account));
+        assertThat(bank.calculateBalance(account)).isEqualTo(160);
     }
 
     @Test
     public void
     should_calculate_balance_after_transactions() {
-        assertEquals(70, bank.calculateBalance(account));
+        assertThat(bank.calculateBalance(account)).isEqualTo(70);
     } 
 
 }

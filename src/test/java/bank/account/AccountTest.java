@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 public class AccountTest {
 
@@ -22,7 +22,7 @@ public class AccountTest {
     @Test
     public void should_store_withdrawal() {
         account.addTransaction(new Transaction(TransactionType.WITHDRAWAL, 100));
-        assertEquals(1, account.getTransactions().size());
+        assertThat(account.getTransactions()).hasSize(1);
     }
 
 }
